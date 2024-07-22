@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const User = require('../models/user');
+const { sendOTP,sendPasswordReset} = require('../utils/nodemailer')
+
 
 const router = express.Router();
 
@@ -85,5 +87,67 @@ router.post('/login', async (req, res) => {
         res.status(500).send({ "status": "error", "msg": error.message });
     }
 });
+
+// //FORGOT PASSWORD LINK
+
+// router.post('/forgot-password', async (req, res) => {
+//     const { email } = req.body;
+//     const user = await User.findOne({ email });
+
+// //checking if the user is valid
+//     if (!user) {
+//         return res.status(400).send({ 'msg': 'User with given email does not exist' });
+//     }
+
+//     const token = jwt.sign({ userId: user._id },process.env.JWT_SECRET, { expiresIn: '10m' });
+//     user.resetPasswordToken = token;
+//     user.resetPasswordExpires = Date.now() +  10 * 60 * 1000; // 10 minutes
+
+//     await user.save();
+//     console.log("link sent")
+
+// })
+
+// transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//         console.error(error);
+//         return res.status(500).send('Error sending email');
+//     }
+//     res.status(200).send('Password reset email sent');
+// })
+//   catch(error) {
+//     res.status(500).send('Server error');
+// }
+
+// //resetting the password link
+
+// router.post('/reset-password/:token', async (req, res) => {
+//   const { token } = req.params;
+//   const { newPassword } = req.body;
+
+//   let decoded;
+//   try {
+//     decoded = jwt.verify(token, process.env.JWT_SECRET);
+//   } catch (err) {
+//     return res.status(400).send('Invalid or expired token');
+//   }
+
+//   const user = await User.findOne({
+//     _id: decoded.userId,
+//     resetPasswordToken: token,
+//     resetPasswordExpires: { $gt: Date.now() },
+//   });
+
+//   if (!user) {
+//     return res.status(400).send('Invalid or expired token');
+//   }
+
+//   user.password = newPassword;
+//   user.resetPasswordToken = undefined;
+//   user.resetPasswordExpires = undefined;
+
+//   await user.save();
+//   res.status(200).send('Password has been reset');
+// });
 
 module.exports = router;

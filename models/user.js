@@ -7,7 +7,9 @@ const userSchema = new mongoose.Schema({
     lastName:String,
     google: String,
     apple: String,
-    phoneNumber:String
+    phoneNumber: String,
+     resetPasswordToken: String,
+  resetPasswordExpires: Date,
 },
 { collection: 'users' });
 const model = mongoose.model('User', userSchema);
