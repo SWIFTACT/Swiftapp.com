@@ -1,10 +1,13 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
+
 const User = require('../models/user');
-const { sendOTP,sendPasswordReset} = require('../utils/nodemailer')
+const { sendOTP,sendPasswordReset,transport} = require('../utils/nodemailer')
 
 
 const router = express.Router();
@@ -88,66 +91,90 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// //FORGOT PASSWORD LINK
+// Forgot password route
+router.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ email });
 
-// router.post('/forgot-password', async (req, res) => {
-//     const { email } = req.body;
-//     const user = await User.findOne({ email });
+    // Check if the user is valid
+    if (!user) {
+      return res.status(400).send({ msg: 'User with given email does not exist' });
+    }
 
-// //checking if the user is valid
-//     if (!user) {
-//         return res.status(400).send({ 'msg': 'User with given email does not exist' });
-//     }
+    const otp = crypto.randomInt(10000,999999).toString();
+    user.otp = otp;
+    user.otptime = Date.now() + 10 * 60 * 1000; // 10 minutes
 
-//     const token = jwt.sign({ userId: user._id },process.env.JWT_SECRET, { expiresIn: '10m' });
-//     user.resetPasswordToken = token;
-//     user.resetPasswordExpires = Date.now() +  10 * 60 * 1000; // 10 minutes
+    await user.save();
 
-//     await user.save();
-//     console.log("link sent")
+    await sendOTP(email, otp)
 
-// })
+  } catch (error) {
+    console.error('Server error:', error);
+    res.status(500).send({ msg: 'Server error' });
+  }
+});
 
-// transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//         console.error(error);
-//         return res.status(500).send('Error sending email');
-//     }
-//     res.status(200).send('Password reset email sent');
-// })
-//   catch(error) {
-//     res.status(500).send('Server error');
-// }
 
-// //resetting the password link
+// Verify OTP route
+router.post('/verify-otp', async (req, res) => {
+  const { otp } = req.body;
 
-// router.post('/reset-password/:token', async (req, res) => {
-//   const { token } = req.params;
-//   const { newPassword } = req.body;
+  try {
+    const user = await User.findOne({ otp });
 
-//   let decoded;
-//   try {
-//     decoded = jwt.verify(token, process.env.JWT_SECRET);
-//   } catch (err) {
-//     return res.status(400).send('Invalid or expired token');
-//   }
+    if (!user) {
+      return res.status(400).send({ msg: 'Invalid OTP' });
+    }
 
-//   const user = await User.findOne({
-//     _id: decoded.userId,
-//     resetPasswordToken: token,
-//     resetPasswordExpires: { $gt: Date.now() },
-//   });
+    // Check if OTP is valid and not expired
+    if (user.otp !== otp || Date.now() > user.otptime) {
+      return res.status(400).send({ msg: 'Invalid or expired OTP' });
+    }
 
-//   if (!user) {
-//     return res.status(400).send('Invalid or expired token');
-//   }
+    res.status(200).send({ msg: 'OTP verified successfully' });
+  } catch (error) {
+    console.error('Server error:', error);
+    res.status(500).send({ msg: 'Server error' });
+  }
+});
+//resetting the password link
 
-//   user.password = newPassword;
-//   user.resetPasswordToken = undefined;
-//   user.resetPasswordExpires = undefined;
+// Resetting the password route
+router.post('/reset-password/:token', async (req, res) => {
+  const { token } = req.params;
+  const { newPassword } = req.body;
 
-//   await user.save();
-//   res.status(200).send('Password has been reset');
-// });
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+    const user = await User.findOne({
+      _id: decoded.userId,
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+      return res.status(400).send({ msg: 'Invalid or expired token' });
+    }
+
+    // Hash the new password before saving
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    // Save the new password
+    user.password = hashedPassword;
+    user.resetPasswordToken = undefined; // Clear reset token
+    user.resetPasswordExpires = undefined; // Clear reset token expiry time
+
+    await user.save();
+
+    res.status(200).send({ msg: 'Password has been reset successfully' });
+  } catch (error) {
+    console.error('Server error:', error);
+    res.status(500).send({ msg: 'Server error' });
+  }
+});
 
 module.exports = router;

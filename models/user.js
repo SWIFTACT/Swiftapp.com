@@ -8,8 +8,8 @@ const userSchema = new mongoose.Schema({
     google: String,
     apple: String,
     phoneNumber: String,
-     resetPasswordToken: String,
-  resetPasswordExpires: Date,
+    otp: String,
+  otptime: Date,
 },
 { collection: 'users' });
 const model = mongoose.model('User', userSchema);

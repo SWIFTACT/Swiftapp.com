@@ -9,7 +9,7 @@ const transport = nodemailer.createTransport({
   },
 });
 
-const sendPasswordReset = async (email, fullname, resetPasswordCode) => {
+const sendPasswordReset = async (email, firstName, resetPasswordCode) => {
   try {
     const info = await transport.sendMail({
       from: `SWIFT`,
@@ -21,7 +21,7 @@ const sendPasswordReset = async (email, fullname, resetPasswordCode) => {
                 <img alt="Heurekka" style="height: 30px; margin-right: 8px;" src="https://drive.google.com/uc?export=view&id=1REJbJrhQZakh4UD3gypU8OPa-A2RJVZA">
             </div>
             <br/>
-            <p style="line-height: 1.2;">Hi ${fullname},</p>
+            // <p style="line-height: 1.2;">Hi ${firstName},</p>
             <p style="line-height: 1.2;">We've received a request to reset your password.</p>
             <p style="line-height: 1.5;">If you didn't make the request, just ignore this message. Otherwise, you can reset your password.</p>        
             <a href=https://server-medstock.onrender.com/user_auth/reset_password/${resetPasswordCode}>
@@ -76,5 +76,6 @@ const sendOTP = async (email, otp) => {
 
 module.exports = {
   sendPasswordReset,
-  sendOTP
+  sendOTP,
+  transport
 };
