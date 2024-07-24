@@ -1,0 +1,25 @@
+.slick-slide {
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  }
+  
+  .slick-slide.slick-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .slick-slide:not(.slick-active) {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  
+  .slick-prev, .slick-next {
+    z-index: 1;
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    color: #000;
+    font-size: 30px;
+  }
+
+  
+  
