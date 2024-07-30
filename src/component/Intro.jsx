@@ -14,6 +14,7 @@ const Intro = () => {
     dots: false,
     infinite: true,
     speed: 500,
+    arrows: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -26,7 +27,7 @@ const Intro = () => {
   return (
     <>
 
-      <div className='absolute top-[294px] left-[50px] text-white z-10'>
+      <div className='absolute top-[214px] left-[50px] text-white z-10'>
         <h1 className={` ${styles.sectionHeadText}  font-[700]`}>Order on Foodhub</h1>
         <p className={` ${styles.sectionSubText}  font-[400] -mt-[1rem] mb-[3rem]`}>Get food, drinks, pastries, pharmacies and more.</p>
         <div className='flex relative justify-between sm:py-8 px-12 py-5 px-4  bg-white outline-none w-[90%] lg:w-[90%] xl:w-[110%] m:w-[90%]'>
