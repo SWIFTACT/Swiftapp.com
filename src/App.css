@@ -20,6 +20,7 @@ input{
 
 ::placeholder{
   font-size: 12px;
+  color:black;
 }
 
 .slider-restaurant-menu{
@@ -140,6 +141,15 @@ input{
 .overlay-active {
   transform: none;
 }
+
+/* Explore slider div */
+.slider-div{
+  margin: 3px !important;
+  display: flex !important;
+  justify-content: center !important ;
+  align-items: center !important;
+}
+
 
 /* delete acc ount disactivation */
 /* CSS for .account-deactivation-responsive */
@@ -280,8 +290,41 @@ input{
   }
 
 }
+/* slider menu restaurent */
+.slider-restaurant-menu{
+  display: flex !important;
+  margin: 0 6px !important;
+  border-radius: 5px;
+  height: 30px !important;
+  transition: .2 ease;
+  cursor: pointer;
+}
+.slider-restaurant-menu:hover,
+.slider-restaurant-menu.active {
+  background: red;
+  color: white;
+}
 
-
+/* link styling */
+.link-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  margin: 0 2px;
+  padding: 10px 3px;
+  text-align: center;
+  background: #F4EEEE;
+  border: 1px solid red;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.link-item:hover,
+.link-item.active {
+  background: white;
+}
 /* password change styling */
 
 

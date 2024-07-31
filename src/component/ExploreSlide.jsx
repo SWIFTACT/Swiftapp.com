@@ -35,8 +35,10 @@ const ExploreSlide = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: false
         }
       }
     ]
@@ -48,16 +50,18 @@ const ExploreSlide = () => {
         <h1 className='px-4 font-light text-2xl md:text-3xl lg:text-4xl text-black text-center'>
           Discount Alert: Get 25% off All orders this Week!
         </h1>
-        <Slider {...settings} className='mt-10 px-6'>
-          {topResturants.map((restaurent, index) => (
-            <div key={index} className='flex flex-col justify-center items-center'>
-              <img src={restaurent.image} alt="restaurant" className='rounded-full w-3/4 md:w-2/3 lg:w-full h-auto' />
-              <p className='text-sm md:text-base lg:text-lg mb-2 p-2 shadow-lg rounded-md text-white bg-primary w-auto flex items-center justify-center'>
-                {restaurent.name}
-              </p>
-            </div>
-          ))}
-        </Slider>
+        <div className='mr-3'>
+          <Slider {...settings} className='my-10 px-6 '>
+            {topResturants.map((restaurent, index) => (
+              <div key={index} className='flex flex-col justify-center slider-div items-center'>
+                <img src={restaurent.image} alt="restaurant" className='rounded-full w-[80%]  h-auto' />
+                <p className='text-[10px] -mt-2  shadow-lg rounded-md text-white bg-primary w-[70%] flex items-center justify-center'>
+                  {restaurent.name}
+                </p>
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     </>
   );

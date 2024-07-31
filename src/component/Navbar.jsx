@@ -1,16 +1,16 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { styles } from '../style';
-// import Login from './Login';
 import SignUp from './SignUp';
 import Cart from './Cart';
-import { FaCaretDown, FaChevronDown } from 'react-icons/fa';
 import AccountDiv from './AccountDiv';
+import { FaChevronDown } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const loginRef = useRef();
   const myaccRef = useRef();
+  const [isCartOpen, setIsCartOpen] = useState(false); // Manage cart menu visibility
   const location = useLocation();
 
   const handleToggleOpenLogin = () => {
@@ -19,6 +19,10 @@ const Navbar = () => {
 
   const handleToggleAccountOpen = () => {
     myaccRef.current.classList.toggle('acc-div');
+  };
+
+  const handleToggleCartMenu = () => {
+    setIsCartOpen(prevState => !prevState);
   };
 
   useEffect(() => {
@@ -40,8 +44,16 @@ const Navbar = () => {
               <FaChevronDown className='text-[13px] text-primary' />
             </div>
           )}
-          <Cart />
-          <div ref={myaccRef} onC className='acc-item'>
+          <div className='relative'>
+            <Cart onClick={handleToggleCartMenu} />
+            {isCartOpen && (
+              <div className='absolute top-10 right-0 bg-white shadow-lg border border-gray-300 p-4 rounded'>
+                {/* Render cart menu items here */}
+                <p>Your cart items will be displayed here.</p>
+              </div>
+            )}
+          </div>
+          <div ref={myaccRef} className='acc-item'>
             <AccountDiv />
           </div>
         </div>

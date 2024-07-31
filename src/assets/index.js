@@ -19,6 +19,12 @@ import exp9 from './exp9.png';
 import exp10 from './exp10.png';
 import exp11 from './exp11.png';
 import exp12 from './exp12.png';
+import imrev1 from './imrev1.png'
+import imrev2 from './imrev2.png'
+import imrev3 from './imrev3.png'
+import imrev4 from './imrev4.png'
+import imrev5 from './imrev5.png'
+import imrev6 from './imrev6.png'
 
 const topResturants = [
     {
@@ -149,4 +155,44 @@ const exploreMore = [
     }
 ];
 
-export { topResturants, details, exploreMore };
+const reviews = [
+    {
+        image: imrev1,
+        name: 'Jasmine Silver',
+        context: "'Fantastic service! The food was delicious and arrived quickly. Highly recommend!'",
+        time: '1:50px, Jun 18, 2024'
+    },
+    {
+        image: imrev2,
+        name: 'Jasmine Silver',
+        context: "'Fantastic service! The food was delicious and arrived quickly. Highly recommend!'",
+        time: '1:50px, Jun 18, 2024'
+    },
+    {
+        image: imrev3,
+        name: 'Jasmine Silver',
+        context: "'Fantastic service! The food was delicious and arrived quickly. Highly recommend!'",
+        time: '1:50px, Jun 18, 2024'
+    },
+    {
+        image: imrev4,
+        name: 'Jasmine Silver',
+        context: "'Fantastic service! The food was delicious and arrived quickly. Highly recommend!'",
+        time: '1:50px, Jun 18, 2024'
+    },
+    {
+        image: imrev5,
+        name: 'Jasmine Silver',
+        context: "'Fantastic service! The food was delicious and arrived quickly. Highly recommend!'",
+        time: '1:50px, Jun 18, 2024'
+    },
+    {
+        image: imrev6,
+        name: 'Jasmine Silver',
+        context: "'Fantastic service! The food was delicious and arrived quickly. Highly recommend!'",
+        time: '1:50px, Jun 18, 2024'
+    },
+
+]
+
+export { topResturants, details, exploreMore, reviews };
