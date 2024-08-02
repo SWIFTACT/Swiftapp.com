@@ -20,7 +20,7 @@ import ChangePassword from './pages/Account-Settings/ChangePassword';
 import AccountDeactivation from './component/AccountDeactivation';
 import Logout from './component/Logout';
 import OrderPage from './pages/OrderPage';
-import { CartProvider } from './contest/CartContext'; // Adjust the import based on your file structure
+import { CartProvider } from './context/CartContext'; // Adjust the import based on your file structure
 
 function App() {
   const handleToggleOpenLogin = () => {
@@ -29,7 +29,6 @@ function App() {
   };
 
   return (
-    <CartProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -59,7 +58,6 @@ function App() {
           <Route path="/profile/logout" element={<Logout />} />
         </Routes>
       </BrowserRouter>
-    </CartProvider>
   );
 }
 

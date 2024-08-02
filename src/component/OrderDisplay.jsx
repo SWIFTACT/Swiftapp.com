@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useCart } from '../contest/CartContext';
-// import { useCart } from './CartContext'; // Adjust the import based on your file structure
+import { ShopContext } from '../context/ShopContext';
 
 const OrderDisplay = ({ restaurant }) => {
   const { itemId } = useParams();
@@ -11,7 +10,7 @@ const OrderDisplay = ({ restaurant }) => {
   const [selectedExtras, setSelectedExtras] = useState([]);
   const [extraQuantities, setExtraQuantities] = useState({});
   const [notification, setNotification] = useState('');
-  const { addToCart } = useCart(); // Access context
+  const { addToCart } = useContext(ShopContext); // Access context
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,29 +23,22 @@ const OrderDisplay = ({ restaurant }) => {
   if (!item) return <div className="text-center text-gray-500">Loading...</div>;
 
   const handleAddToCart = () => {
-    if (item) {
-      const cartItem = {
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: quantity,
-        image: item.image, // Include image URL
-        extras: selectedExtras.map(extra => ({
-          id: extra.id,
-          quantity: extraQuantities[extra.id] || 0
-        })),
-        totalPrice: totalPrice
-      };
-  
-      // Add item to cart
-      addToCart(cartItem);
-  
-      // Show notification
-      setNotification('One Item Added to Cart');
-  
-      // Hide notification after 3 seconds
-      setTimeout(() => setNotification(''), 3000);
-    }
+    const cartItem = {
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      quantity,
+      extras: selectedExtras.map(extra => ({
+        ...extra,
+        quantity: extraQuantities[extra.id] || 0
+      }))
+    };
+
+    addToCart(cartItem);
+
+    setNotification('One Item Added to Cart');
+    setTimeout(() => setNotification(''), 3000);
   };
 
   const handleToggleExtra = (extra) => {

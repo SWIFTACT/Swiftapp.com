@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const loginRef = useRef();
   const myaccRef = useRef();
-  const [isCartOpen, setIsCartOpen] = useState(false); // Manage cart menu visibility
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
 
   const handleToggleOpenLogin = () => {
