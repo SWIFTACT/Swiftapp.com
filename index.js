@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
-const path = require('path')
 const cors = require('cors')
 
 
@@ -34,6 +33,11 @@ app.use(cors());
 
 // gain access to my routes
 app.use("/auth", require('./routes/auth'));
+app.use("/admin", require('./admin/routes/admin'));
+app.use("/userCart", require('./routes/userCart'))
+app.use("/authenticateUser", require('./routes/authenticateUser'))
+app.use("/product", require('./routes/product'))
+// app.use("/adminauth", require('./admin/routes/adminauth'))
 
 const PORT = process.env.PORT || 2370
 

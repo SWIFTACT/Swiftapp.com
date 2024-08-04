@@ -2,12 +2,11 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
-const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 
 const User = require('../models/user');
-const { sendOTP,sendPasswordReset,transport} = require('../utils/nodemailer')
+const { sendOTP} = require('../utils/nodemailer')
 
 
 const router = express.Router();
@@ -176,5 +175,7 @@ router.post('/reset-password/:token', async (req, res) => {
     res.status(500).send({ msg: 'Server error' });
   }
 });
+
+
 
 module.exports = router;
