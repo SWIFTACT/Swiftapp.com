@@ -15,20 +15,21 @@ export const all_restaurants = [
         id: 1,
         bg_image_main: restaurentbgimage,
         bg_image: restaurentimage1,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Frida: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Frida: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'Chicken Republic',
         menu: ['Jollof Rice', 'Fried Rice', 'White Rice', 'Beans'],
         food: [
@@ -101,7 +102,7 @@ export const all_restaurants = [
                 name: 'Chicken Salad',
                 price: '2500',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -117,7 +118,7 @@ export const all_restaurants = [
                 name: 'Grilled Chicken',
                 price: '5000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -133,7 +134,7 @@ export const all_restaurants = [
                 name: 'Fish and Chips',
                 price: '3500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -149,7 +150,7 @@ export const all_restaurants = [
                 name: 'Pounded Yam and Egusi',
                 price: '4000',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -165,7 +166,7 @@ export const all_restaurants = [
                 name: 'Fried Plantain',
                 price: '1500',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -181,7 +182,7 @@ export const all_restaurants = [
                 name: 'Moi Moi',
                 price: '2000',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -197,7 +198,7 @@ export const all_restaurants = [
                 name: 'Beans and Chicken',
                 price: '3500',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -213,7 +214,7 @@ export const all_restaurants = [
                 name: 'Beans and White Rice',
                 price: '3200',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -229,7 +230,7 @@ export const all_restaurants = [
                 name: 'Beans and Fish',
                 price: '4000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -245,7 +246,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Fish',
                 price: '4500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -261,7 +262,7 @@ export const all_restaurants = [
                 name: 'Jollof Rice and Fish',
                 price: '3500',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -277,7 +278,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Moi Moi',
                 price: '3000',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -293,7 +294,7 @@ export const all_restaurants = [
                 name: 'White Rice and Moi Moi',
                 price: '3200',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -309,7 +310,7 @@ export const all_restaurants = [
                 name: 'Beans and Moi Moi',
                 price: '3500',
                 image: restaurentimage1,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -325,7 +326,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Plantain',
                 price: '3500',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -341,7 +342,7 @@ export const all_restaurants = [
                 name: 'Jollof Rice and Moi Moi',
                 price: '3000',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -357,20 +358,21 @@ export const all_restaurants = [
     {
         id: 2,
         bg_image: restaurentimage2,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Friday: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Friday: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'KFC',
         menu: ['Chicken Bucket', 'Burgers', 'Fries', 'Drinks'],
         food: [
@@ -379,7 +381,7 @@ export const all_restaurants = [
                 name: 'Chicken Bucket',
                 price: '5000',
                 image: restaurentimage4,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -395,7 +397,7 @@ export const all_restaurants = [
                 name: 'Zinger Burger',
                 price: '3000',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -411,7 +413,7 @@ export const all_restaurants = [
                 name: 'Fries',
                 price: '1500',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -427,7 +429,7 @@ export const all_restaurants = [
                 name: 'Chicken Wrap',
                 price: '2500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -443,7 +445,7 @@ export const all_restaurants = [
                 name: 'Chicken Wings',
                 price: '3500',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -459,7 +461,7 @@ export const all_restaurants = [
                 name: 'Popcorn Chicken',
                 price: '2000',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -475,7 +477,7 @@ export const all_restaurants = [
                 name: 'Veggie Burger',
                 price: '3000',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -491,7 +493,7 @@ export const all_restaurants = [
                 name: 'Cheese Fries',
                 price: '1800',
                 image: restaurentimage1,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -507,7 +509,7 @@ export const all_restaurants = [
                 name: 'Chocolate Shake',
                 price: '2500',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -523,7 +525,7 @@ export const all_restaurants = [
                 name: 'Strawberry Sundae',
                 price: '2000',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -539,7 +541,7 @@ export const all_restaurants = [
                 name: 'Chicken Salad',
                 price: '2500',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -555,7 +557,7 @@ export const all_restaurants = [
                 name: 'Grilled Chicken',
                 price: '5000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -571,7 +573,7 @@ export const all_restaurants = [
                 name: 'Fish and Chips',
                 price: '3500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -587,7 +589,7 @@ export const all_restaurants = [
                 name: 'Pounded Yam and Egusi',
                 price: '4000',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -603,7 +605,7 @@ export const all_restaurants = [
                 name: 'Fried Plantain',
                 price: '1500',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -619,7 +621,7 @@ export const all_restaurants = [
                 name: 'Moi Moi',
                 price: '2000',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -635,7 +637,7 @@ export const all_restaurants = [
                 name: 'Beans and Chicken',
                 price: '3500',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -651,7 +653,7 @@ export const all_restaurants = [
                 name: 'Beans and White Rice',
                 price: '3200',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -667,7 +669,7 @@ export const all_restaurants = [
                 name: 'Beans and Fish',
                 price: '4000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -683,7 +685,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Fish',
                 price: '4500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -699,20 +701,21 @@ export const all_restaurants = [
     {
         id: 3,
         bg_image: restaurentimage3,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Friday: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Friday: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'Dominos',
         menu: ['Pizza', 'Pasta', 'Sides', 'Desserts'],
         food: [
@@ -721,7 +724,7 @@ export const all_restaurants = [
                 name: 'Pepperoni Pizza',
                 price: '6000',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -737,7 +740,7 @@ export const all_restaurants = [
                 name: 'Chicken Alfredo Pasta',
                 price: '4500',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -753,7 +756,7 @@ export const all_restaurants = [
                 name: 'Garlic Bread',
                 price: '2000',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -769,7 +772,7 @@ export const all_restaurants = [
                 name: 'Margherita Pizza',
                 price: '5500',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -785,7 +788,7 @@ export const all_restaurants = [
                 name: 'Spaghetti Bolognese',
                 price: '5000',
                 image: restaurentimage4,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -801,7 +804,7 @@ export const all_restaurants = [
                 name: 'Chicken Wings',
                 price: '3000',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -817,7 +820,7 @@ export const all_restaurants = [
                 name: 'BBQ Chicken Pizza',
                 price: '6500',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -833,7 +836,7 @@ export const all_restaurants = [
                 name: 'Veggie Supreme Pizza',
                 price: '5500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -849,7 +852,7 @@ export const all_restaurants = [
                 name: 'Tiramisu',
                 price: '2500',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -865,7 +868,7 @@ export const all_restaurants = [
                 name: 'Chocolate Lava Cake',
                 price: '3000',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -881,7 +884,7 @@ export const all_restaurants = [
                 name: 'Chicken Salad',
                 price: '2500',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -897,7 +900,7 @@ export const all_restaurants = [
                 name: 'Grilled Chicken',
                 price: '5000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -913,7 +916,7 @@ export const all_restaurants = [
                 name: 'Fish and Chips',
                 price: '3500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -929,7 +932,7 @@ export const all_restaurants = [
                 name: 'Pounded Yam and Egusi',
                 price: '4000',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -945,7 +948,7 @@ export const all_restaurants = [
                 name: 'Fried Plantain',
                 price: '1500',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -961,7 +964,7 @@ export const all_restaurants = [
                 name: 'Moi Moi',
                 price: '2000',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -977,7 +980,7 @@ export const all_restaurants = [
                 name: 'Beans and Chicken',
                 price: '3500',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -993,7 +996,7 @@ export const all_restaurants = [
                 name: 'Beans and White Rice',
                 price: '3200',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1009,7 +1012,7 @@ export const all_restaurants = [
                 name: 'Beans and Fish',
                 price: '4000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1025,7 +1028,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Fish',
                 price: '4500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1041,20 +1044,21 @@ export const all_restaurants = [
     {
         id: 4,
         bg_image: restaurentimage4,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Friday: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Friday: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'Mr Biggs',
         menu: ['Snacks', 'Meals', 'Drinks', 'Pastries'],
         food: [
@@ -1063,7 +1067,7 @@ export const all_restaurants = [
                 name: 'Scotch Egg',
                 price: '1000',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1079,7 +1083,7 @@ export const all_restaurants = [
                 name: 'Meat Pie',
                 price: '1500',
                 image: restaurentimage4,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1095,7 +1099,7 @@ export const all_restaurants = [
                 name: 'Chicken Pie',
                 price: '1500',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1111,7 +1115,7 @@ export const all_restaurants = [
                 name: 'Fish Roll',
                 price: '1000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1127,7 +1131,7 @@ export const all_restaurants = [
                 name: 'Beef Roll',
                 price: '1200',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1143,7 +1147,7 @@ export const all_restaurants = [
                 name: 'Sausage Roll',
                 price: '800',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1159,7 +1163,7 @@ export const all_restaurants = [
                 name: 'Chicken Burger',
                 price: '3000',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1175,7 +1179,7 @@ export const all_restaurants = [
                 name: 'Fries',
                 price: '1500',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1191,7 +1195,7 @@ export const all_restaurants = [
                 name: 'Jollof Rice and Chicken',
                 price: '3500',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1207,7 +1211,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Chicken',
                 price: '3500',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1223,7 +1227,7 @@ export const all_restaurants = [
                 name: 'Chicken Salad',
                 price: '2500',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1239,7 +1243,7 @@ export const all_restaurants = [
                 name: 'Grilled Chicken',
                 price: '5000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1255,7 +1259,7 @@ export const all_restaurants = [
                 name: 'Fish and Chips',
                 price: '3500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1271,7 +1275,7 @@ export const all_restaurants = [
                 name: 'Pounded Yam and Egusi',
                 price: '4000',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1287,7 +1291,7 @@ export const all_restaurants = [
                 name: 'Fried Plantain',
                 price: '1500',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1303,7 +1307,7 @@ export const all_restaurants = [
                 name: 'Moi Moi',
                 price: '2000',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1319,7 +1323,7 @@ export const all_restaurants = [
                 name: 'Beans and Chicken',
                 price: '3500',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1335,7 +1339,7 @@ export const all_restaurants = [
                 name: 'Beans and White Rice',
                 price: '3200',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1351,7 +1355,7 @@ export const all_restaurants = [
                 name: 'Beans and Fish',
                 price: '4000',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1367,7 +1371,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Fish',
                 price: '4500',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1383,20 +1387,21 @@ export const all_restaurants = [
     {
         id: 5,
         bg_image: restaurentimage5,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Friday: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Friday: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'Tantalizers',
         menu: ['Meals', 'Snacks', 'Pastries', 'Drinks'],
         food: [
@@ -1405,7 +1410,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Chicken',
                 price: '4000',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1421,7 +1426,7 @@ export const all_restaurants = [
                 name: 'Jollof Rice and Fish',
                 price: '3500',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1437,7 +1442,7 @@ export const all_restaurants = [
                 name: 'Moi Moi',
                 price: '2000',
                 image: restaurentimage4,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1453,7 +1458,7 @@ export const all_restaurants = [
                 name: 'Fried Plantain',
                 price: '1500',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1469,7 +1474,7 @@ export const all_restaurants = [
                 name: 'Chicken Wings',
                 price: '3500',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1485,7 +1490,7 @@ export const all_restaurants = [
                 name: 'Scotch Egg',
                 price: '1000',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1501,7 +1506,7 @@ export const all_restaurants = [
                 name: 'Fish Roll',
                 price: '1000',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1517,7 +1522,7 @@ export const all_restaurants = [
                 name: 'Meat Pie',
                 price: '1500',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1533,7 +1538,7 @@ export const all_restaurants = [
                 name: 'Chicken Pie',
                 price: '1500',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1549,7 +1554,7 @@ export const all_restaurants = [
                 name: 'Beef Roll',
                 price: '1200',
                 image: restaurentimage1,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1565,7 +1570,7 @@ export const all_restaurants = [
                 name: 'Chicken Salad',
                 price: '2500',
                 image: restaurentimage2,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1581,7 +1586,7 @@ export const all_restaurants = [
                 name: 'Grilled Chicken',
                 price: '5000',
                 image: restaurentimage3,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1597,7 +1602,7 @@ export const all_restaurants = [
                 name: 'Fish and Chips',
                 price: '3500',
                 image: restaurentimage4,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1613,7 +1618,7 @@ export const all_restaurants = [
                 name: 'Pounded Yam and Egusi',
                 price: '4000',
                 image: restaurentimage5,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1629,7 +1634,7 @@ export const all_restaurants = [
                 name: 'Beans and Chicken',
                 price: '3500',
                 image: restaurentimage6,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1645,7 +1650,7 @@ export const all_restaurants = [
                 name: 'Beans and White Rice',
                 price: '3200',
                 image: restaurentimage7,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1661,7 +1666,7 @@ export const all_restaurants = [
                 name: 'Beans and Fish',
                 price: '4000',
                 image: restaurentimage8,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1677,7 +1682,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Fish',
                 price: '4500',
                 image: restaurentimage9,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1693,7 +1698,7 @@ export const all_restaurants = [
                 name: 'Jollof Rice and Moi Moi',
                 price: '3000',
                 image: restaurentimage10,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1709,7 +1714,7 @@ export const all_restaurants = [
                 name: 'Fried Rice and Moi Moi',
                 price: '3000',
                 image: restaurentimage1,
-                 extra: [
+                extra: [
                     {
                         name: ' Chicken',
                         price: '2500'
@@ -1725,20 +1730,21 @@ export const all_restaurants = [
     {
         id: 6,
         bg_image: restaurentimage6,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Friday: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Friday: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'Burger King',
         menu: ['Burgers', 'Sides', 'Drinks', 'Desserts'],
         food: [
@@ -1867,20 +1873,21 @@ export const all_restaurants = [
     {
         id: 7,
         bg_image: restaurentimage7,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Friday: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Friday: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'Subway',
         menu: ['Sandwiches', 'Salads', 'Sides', 'Drinks'],
         food: [
@@ -2009,20 +2016,21 @@ export const all_restaurants = [
     {
         id: 8,
         bg_image: restaurentimage8,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Friday: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Friday: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'Pizza Hut',
         menu: ['Pizza', 'Pasta', 'Sides', 'Desserts'],
         food: [
@@ -2141,7 +2149,7 @@ export const all_restaurants = [
                 image: restaurentimage6
             },
             {
-                    id: 160,
+                id: 160,
                 name: 'Fried Rice and Fish',
                 price: '4500',
                 image: restaurentimage7
@@ -2151,20 +2159,21 @@ export const all_restaurants = [
     {
         id: 9,
         bg_image: restaurentimage9,
+        bg_image_main: restaurentbgimage,
         information: [
             {
-              address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
-              hours: {
-                Monday: '9:00 AM - 10:00 PM',
-                Tuesday: '9:00 AM - 10:00 PM',
-                Wednesday: '9:00 AM - 10:00 PM',
-                Thursday: '9:00 AM - 10:00 PM',
-                Friday: '9:00 AM - 11:00 PM',
-                Saturday: '10:00 AM - 11:00 PM',
-                Sunday: 'Closed',
-              }
+                address: '11, Poultry Road, Opposite AAU school Gate, Ekpoma, Edo State.',
+                hours: {
+                    Monday: '9:00 AM - 10:00 PM',
+                    Tuesday: '9:00 AM - 10:00 PM',
+                    Wednesday: '9:00 AM - 10:00 PM',
+                    Thursday: '9:00 AM - 10:00 PM',
+                    Friday: '9:00 AM - 11:00 PM',
+                    Saturday: '10:00 AM - 11:00 PM',
+                    Sunday: 'Closed',
+                }
             },
-          ],
+        ],
         name: 'Bukka Hut',
         menu: ['Local Dishes', 'Snacks', 'Drinks', 'Pastries'],
         food: [

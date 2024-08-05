@@ -21,6 +21,8 @@ import AccountDeactivation from './component/AccountDeactivation';
 import Logout from './component/Logout';
 import OrderPage from './pages/OrderPage';
 import { CartProvider } from './context/CartContext'; // Adjust the import based on your file structure
+import CheckoutPage from './pages/CheckoutPage';
+import Paymentpage from './pages/Paymentpage';
 
 function App() {
   const handleToggleOpenLogin = () => {
@@ -31,11 +33,14 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
+          {/*  Login logics and Order, Cart Logics  */}
           <Route path="/" element={<Home />} />
           <Route path="/exploremore" element={<ExploreMore />} />
           <Route path="/mycart" element={<CartPage />} />
           <Route path="/order/:restaurantId/:itemId" element={<OrderPage />} />
           <Route path="/restaurants/:restaurantname" element={<Restaurants />} />
+          <Route path="/mycart/checkout" element={<CheckoutPage />} />
+          <Route path="/mycart/checkout/payment" element={<Paymentpage />} />
           
           {/* Password routes */}
           <Route path="/forget-password" element={<ForgetPassword handleToggleOpenLogin={handleToggleOpenLogin} />} />

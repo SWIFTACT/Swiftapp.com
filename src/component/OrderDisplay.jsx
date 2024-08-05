@@ -32,7 +32,11 @@ const OrderDisplay = ({ restaurant }) => {
       extras: selectedExtras.map(extra => ({
         ...extra,
         quantity: extraQuantities[extra.id] || 0
-      }))
+      })),
+      restaurant: {
+        name: restaurant.name, // Include restaurant name
+        bg_image: restaurant.bg_image_main // Include restaurant bg image
+      }
     };
 
     addToCart(cartItem);

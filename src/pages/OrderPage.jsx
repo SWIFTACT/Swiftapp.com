@@ -6,7 +6,7 @@ import { all_restaurants } from '../assets/all_restaurent';
 import Footer from '../component/Footer';
 
 const OrderPage = () => {
-    const { restaurantId, itemId } = useParams(); // Extract both restaurant ID and item ID from the URL
+    const { restaurantId } = useParams(); // Extract restaurant ID from the URL
     const restaurant = all_restaurants.find(rest => rest.id === parseInt(restaurantId)); // Find the restaurant
 
     return (

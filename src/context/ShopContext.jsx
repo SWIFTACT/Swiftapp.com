@@ -7,22 +7,21 @@ const ShopContextProvider = (props) => {
     const [cart, setCart] = useState({});
 
     const addToCart = (item) => {
-        console.log('Adding to cart:', item); // Debug log
         setCart((prevCart) => {
-            const newCart = { ...prevCart };
-            const itemId = item.id;
-    
-            if (newCart[itemId]) {
-                newCart[itemId].quantity += item.quantity;
-                newCart[itemId].extras = item.extras;
-            } else {
-                newCart[itemId] = { ...item };
-            }
-    
-            console.log('Updated cart:', newCart); // Debug log
-            return newCart;
+          const newCart = { ...prevCart };
+          const itemId = item.id;
+      
+          if (newCart[itemId]) {
+            newCart[itemId].quantity += item.quantity;
+            newCart[itemId].extras = item.extras;
+          } else {
+            newCart[itemId] = { ...item };
+          }
+      
+          return newCart;
         });
-    };
+      };
+
 
     const removeFromCart = (itemId) => {
         setCart((prevCart) => {

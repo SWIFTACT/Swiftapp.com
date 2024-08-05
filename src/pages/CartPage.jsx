@@ -6,7 +6,9 @@ const CartPage = () => {
   return (
     <div>
       <Navbar />
-      <CartDisplay />
+      <div className="p-4">
+        <CartDisplay />
+      </div>
     </div>
   );
 }
