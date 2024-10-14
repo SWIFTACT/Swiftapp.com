@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Cart = require('../models/cart'); 
-const authenticateUser = require('../routes/authenticateUser')// Middleware to authenticate user
+const product = require('../models/productschema')
+const authenticateUser = require('./authenticateUser')// Middleware to authenticate user
 
 const router = express.Router();
 

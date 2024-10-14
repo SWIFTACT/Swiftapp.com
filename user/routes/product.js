@@ -2,7 +2,6 @@ const express = require('express');
 const Product = require('../models/productschema');
 
 
-
 const router = express.Router();
 
 

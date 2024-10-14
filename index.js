@@ -32,11 +32,13 @@ app.use(cors());
 
 
 // gain access to my routes
-app.use("/auth", require('./routes/auth'));
+app.use("/auth", require('./user/routes/auth'));
 app.use("/admin", require('./admin/routes/admin'));
-app.use("/userCart", require('./routes/userCart'))
-app.use("/authenticateUser", require('./routes/authenticateUser'))
-app.use("/product", require('./routes/product'))
+app.use("/userCart", require('./user/routes/userCart'))
+app.use("/authenticateUser", require('./user/routes/authenticateUser'))
+app.use("/product", require('./user/routes/product'))
+app.use("/Payment", require('./user/routes/payment'))
+app.use("/review", require('./user/routes/review'))
 // app.use("/adminauth", require('./admin/routes/adminauth'))
 
 const PORT = process.env.PORT || 2370
