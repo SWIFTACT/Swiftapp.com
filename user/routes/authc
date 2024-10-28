@@ -1,0 +1,28 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "swift endpoint",
+    "collectionId": "c088a08f-dcee-4957-9f70-75be3a5a2563",
+    "dateExported": "2024-10-22T17:18:04.703Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "83d96d0a-2679-4efc-8aa2-e4bfd55284f0",
+            "colId": "c088a08f-dcee-4957-9f70-75be3a5a2563",
+            "containerId": "",
+            "name": "AUTH",
+            "url": "https://swiftapp-com.onrender.com/auth/verify-otp",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-10-22T16:35:58.752Z",
+            "modified": "2024-10-22T17:17:31.655Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\n\"email\":\"jopnprecious90@gmail.com\",\n\"otp\":\"156648\"\n\n \n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "QVqHQZuektMbbny-KZOdsbuOr3tKcCcaELvxaPSd7gWa5p6Ksdi6VjiRjUzGsO7vmQm9uJBQCZASEJ52Kwjygg"
+}

@@ -12,10 +12,12 @@ const authenticateUser = require('../routes/authenticateUser')
 
 const router = express.Router();
 
-// Password validation regex
+// Password, email, and phone number validation regex
 const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const phoneNumberRegex = /^(\+?\d{1,3})?[-.\s]?(\(?\d{3}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
 
-// Endpoint for user to sign up
+// Endpoint for user signup
 router.post('/signup', async (req, res) => {
     const { password, email, googleId, appleId, lastName, firstName, phoneNumber } = req.body;
 
@@ -29,6 +31,22 @@ router.post('/signup', async (req, res) => {
         return res.status(400).json({
             status: "error",
             msg: "Password must be at least 8 characters long, contain at least one uppercase letter, one digit, and one special character."
+        });
+    }
+
+    // Validate email
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({
+            status: "error",
+            msg: "Invalid email format."
+        });
+    }
+
+    // Validate phone number
+    if (!phoneNumberRegex.test(phoneNumber)) {
+        return res.status(400).json({
+            status: "error",
+            msg: "Invalid phone number format."
         });
     }
 
@@ -60,15 +78,24 @@ router.post('/signup', async (req, res) => {
         console.error(error);
         res.status(500).json({ status: "error", msg: error.message });
     }
-});
+
 
 // Endpoint for user to log in
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     // Check if any required field is missing
     if (!email || !password) {
-        return res.status(400).json({ status: 'Error', msg: 'All fields must be filled' });
+        return res.status(400).json({ status: 'error', msg: 'Email and password are required' });
+    }
+
+    // Validate email format
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({
+            status: "error",
+            msg: "Invalid email format."
+        });
     }
 
     // Validate password format
@@ -82,66 +109,41 @@ router.post('/login', async (req, res) => {
     try {
         // Check if user with that email exists in the database
         const user = await User.findOne({ email });
-
         if (!user) {
-            return res.status(400).json({ status: 'Error', msg: 'Incorrect email or password' });
+            return res.status(400).json({ status: 'error', msg: 'Incorrect email or password' });
         }
 
         // Check if password is correct
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (isPasswordValid) {
-            // Generate JWT token
-            const token = jwt.sign({
-                _id: user._id,
-                email: user.email,
-            }, process.env.JWT_SECRET, { expiresIn: '30m' });
-
-            // Update user document online status
-            user.is_online = true;
-            await user.save();
-
-            // Create a new user object without the password
-            const { password, ...userWithoutPassword } = user.toObject();
-
-            res.status(200).json({
-                status: 'Success',
-                msg: 'You have successfully logged in',
-                user: userWithoutPassword,
-                token
-            });
-        } else {
-            res.status(400).json({ status: 'Error', msg: 'Incorrect email or password' });
+        if (!isPasswordValid) {
+            return res.status(400).json({ status: 'error', msg: 'Incorrect email or password' });
         }
+
+        // Generate JWT token
+        const token = jwt.sign(
+            { _id: user._id, email: user.email },
+            process.env.JWT_SECRET,
+            { expiresIn: '30m' }
+        );
+
+        // Update user document online status
+        user.is_online = true;
+        await user.save();
+
+        // Send user data without the password
+        const { password: userPassword, ...userWithoutPassword } = user.toObject();
+
+        res.status(200).json({
+            status: 'success',
+            msg: 'You have successfully logged in',
+            user: userWithoutPassword,
+            token
+        });
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ status: "error", msg: error.message });
+        res.status(500).json({ status: "error", msg: "An error occurred during login. Please try again." });
     }
-});
-// Forgot password route
-router.post('/forgot-password', async (req, res) => {
-  const { email } = req.body;
-  try {
-    const user = await User.findOne({ email });
-
-    // Check if the user is valid
-    if (!user) {
-      return res.status(400).send({ msg: 'User with given email does not exist' });
-    }
-
-    const otp = crypto.randomInt(10000,999999).toString();
-    user.otp = otp;
-    user.otptime = Date.now() + 10 * 60 * 1000; // 10 minutes
-
-    await user.save();
-    await sendOTP(email, otp)
-
-    return res.status(200).send({ msg: `reset password code has already been sent to ${email}`});
-
-  } catch (error) {
-    console.error('Server error:', error);
-    res.status(500).send({ msg: 'Server error' });
-  }
 });
 
 

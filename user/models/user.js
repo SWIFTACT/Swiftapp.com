@@ -9,16 +9,7 @@ const userSchema = new mongoose.Schema({
   card_details: String,
   email: {
     type: String,
-    required: true,
     unique: true,
-    trim: true,
-    lowercase: true,
-    validate: {
-      validator: function (v) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); // Simple email regex
-      },
-      message: props => `${props.value} is not a valid email!`
-    }
   },
   password: {
     type: String,
@@ -35,17 +26,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  
   phoneNumber: {
     type: String,
     required: true,
     trim: true,
-    validate: {
-      validator: function (v) {
-        // Basic validation for phone number format
-        return /^\+?[1-9]\d{1,14}$/.test(v); // E.164 format validation
-      },
-      message: props => `${props.value} is not a valid phone number!`
-    }
   },
   
   is_online: {
