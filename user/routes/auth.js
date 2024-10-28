@@ -73,12 +73,11 @@ router.post('/signup', async (req, res) => {
 
         await newUser.save();
         res.status(201).json({ msg: 'You signed up successfully' });
-
     } catch (error) {
         console.error(error);
         res.status(500).json({ status: "error", msg: error.message });
-    }
-
+    };
+});
 
 // Endpoint for user to log in
 
