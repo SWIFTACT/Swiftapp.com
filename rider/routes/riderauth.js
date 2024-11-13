@@ -4,11 +4,12 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 require('dotenv').config();
 
+// models call 
+const User = require('../models/rideruser');
+const DeliveryArea = require('../models/deliveryArea');
 
-const User = require('../models/user');
-const { sendOTP } = require('../../user/utils/nodemailer')
-const authenticateUser = require('../routes/authenticateUser')
-
+const { sendOTP } = require('../utils/nodemailer');
+const authenticateUser = require('./authenticateUser');
 
 const router = express.Router();
 
@@ -17,69 +18,97 @@ const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const phoneNumberRegex = /^(\+?\d{1,3})?[-.\s]?(\(?\d{3}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
 
-// Endpoint for user signup
+// Port Harcourt coordinates and distance check
+const portHarcourtCenter = { lat: 4.8156, lon: 7.0498 };
+const maxDistanceInKm = 20;
+
+const calculateDistance = (lat1, lon1, lat2, lon2) => {
+  const toRadians = (degrees) => (degrees * Math.PI) / 180;
+  const R = 6371; // Radius of Earth in kilometers
+  const dLat = toRadians(lat2 - lat1);
+  const dLon = toRadians(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c; // Distance in kilometers
+};
+
 router.post('/signup', async (req, res) => {
-    const { password, email, googleId, appleId, lastName, firstName, phoneNumber } = req.body;
+  const { firstName, lastName, email, password, phoneNumber, deliveryArea, vehicle } = req.body;
 
-    // Check if any required field is missing
-    if (!password || !email || !firstName || !lastName || !phoneNumber) {
-        return res.status(400).json({ status: "error", msg: "Fill in your details" });
+  // Validate required fields
+  if (!firstName || !lastName || !email || !password || !phoneNumber || !deliveryArea || !vehicle) {
+    return res.status(400).json({ message: 'Please fill in all fields' });
+  }
+
+  // Validate email format
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Invalid email format' });
+  }
+
+  // Validate password format
+  if (!passwordRegex.test(password)) {
+    return res.status(400).json({ message: 'Password must contain at least 8 characters, including an uppercase letter, a digit, and a special character.' });
+  }
+
+  // Validate phone number format
+  if (!phoneNumberRegex.test(phoneNumber)) {
+    return res.status(400).json({ message: 'Invalid phone number format.' });
+  }
+
+  try {
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'User with this email already exists' });
     }
 
-    // Validate password
-    if (!passwordRegex.test(password)) {
-        return res.status(400).json({
-            status: "error",
-            msg: "Password must be at least 8 characters long, contain at least one uppercase letter, one digit, and one special character."
-        });
+
+    // Check if the delivery area exists
+    const deliveryAreaData = await DeliveryArea.findOne({deliveryArea });
+    if (!deliveryAreaData) {
+      return res.status(400).json({ message: 'Delivery area not found' });
     }
 
-    // Validate email
-    if (!emailRegex.test(email)) {
-        return res.status(400).json({
-            status: "error",
-            msg: "Invalid email format."
-        });
+    // Check if user's location is within 20 km of Port Harcourt
+    const userLocation = deliveryAreaData.coordinates;
+    const distanceFromPortHarcourt = calculateDistance(
+      portHarcourtCenter.lat, portHarcourtCenter.lon,
+      userLocation[1], userLocation[0]
+    );
+
+    if (distanceFromPortHarcourt > maxDistanceInKm) {
+      return res.status(400).json({ message: `You must be located within ${maxDistanceInKm} km of Port Harcourt, Nigeria.` });
     }
 
-    // Validate phone number
-    if (!phoneNumberRegex.test(phoneNumber)) {
-        return res.status(400).json({
-            status: "error",
-            msg: "Invalid phone number format."
-        });
-    }
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    try {
-        // Check if email has been used to create an account before
-        const found = await User.findOne({ email }).lean();
-        if (found) {
-            return res.status(400).json({ status: 'error', msg: `User with this email: ${email} already exists` });
-        }
+    // Create a new user
+    const user = new User({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+      phoneNumber,
+      deliveryArea: deliveryAreaData._id,
+      vehicle
+    });
 
-        // Hash the password before saving
-        const hashedPassword = await bcrypt.hash(password, 10);
+    await user.save();
 
-        // Create a new user
-        const newUser = new User({
-            email,
-            password: hashedPassword,
-            googleId,
-            appleId,
-            lastName,
-            firstName,
-            phoneNumber
-        });
+    // Generate a JWT token
+    const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        await newUser.save();
-        res.status(201).json({ msg: 'You signed up successfully' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ status: "error", msg: error.message });
-    };
+    res.status(201).json({ message: 'User registered successfully', token });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
-
-// Endpoint for user to log in
+//user login
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
@@ -145,7 +174,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// Endpoint  for forgot password
+// forgot-password
 
 router.post('/forgot-password', async (req, res) => {
     const { email } = req.body;
@@ -170,7 +199,6 @@ router.post('/forgot-password', async (req, res) => {
         }
 
         // Generate a 6-digit OTP
-        
     const otp = crypto.randomInt(10000,999999).toString();
     user.otp = otp;
     user.otptime = Date.now() + 1 * 60 * 1000; // 1minutes
@@ -297,3 +325,7 @@ router.post('/logout', authenticateUser, async (req, res) => {
 
 
 module.exports = router;
+
+
+
+

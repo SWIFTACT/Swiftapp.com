@@ -15,3 +15,4 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 function degreesToRadians(degrees) {
   return degrees * (Math.PI / 180);
 }
+
