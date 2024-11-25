@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   googleId: { type: String, unique: true, sparse: true },
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 8 // Minimum length for password
+    minlength: 8
   },
   firstName: {
     type: String,
@@ -26,13 +26,14 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  
+  Name: {
+    type: String,
+  },
   phoneNumber: {
     type: String,
     required: true,
     trim: true,
   },
-  
   is_online: {
     type: Boolean,
     default: false
@@ -41,8 +42,14 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
-},
-{ collection: 'users' });
+}, { collection: 'users' });
+
+// Pre-save hook to set Name field
+userSchema.pre('save', function(next) {
+  this.Name = `${this.firstName} ${this.lastName}`;
+  next();
+});
+
 const model = mongoose.model('User', userSchema);
 
-module.exports = model
+module.exports = model;

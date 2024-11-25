@@ -1,16 +1,20 @@
 const mongoose = require('mongoose');
 
 const riderSchema = new mongoose.Schema({
+
+
   googleId: { type: String, unique: true, sparse: true },
+
   appleId: { type: String, unique: true, sparse: true },
 
-  displayName: String,
-  otp: String,
-  card_details: String,
+  displayName: { type: String },
+
+  otp:{type: String },
+
+card_details: {type: String},
 
   email: {
     type: String,
-    required: true,
     unique: true,
   },
 
@@ -21,19 +25,15 @@ const riderSchema = new mongoose.Schema({
 
   firstName: {
     type: String,
-    required: true,
-    trim: true
   },
 
   lastName: {
     type: String,
-    required: true,
-    trim: true
   },
   phoneNumber: {
     type: String,
     required: true,
-    trim: true,
+    
   },
 
   is_online: {
@@ -55,8 +55,8 @@ const riderSchema = new mongoose.Schema({
     type:String
     // ref: 'Vehicle' // Reference to Vehicle model
   }
-}, { collection: 'users' });
+}, { collection: 'rider' });
 
-const User = mongoose.model('user', riderSchema);
+const Rider = mongoose.model('Rider', riderSchema);
 
-module.exports = User
+module.exports = Rider

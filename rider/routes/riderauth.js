@@ -5,7 +5,7 @@ const crypto = require('crypto');
 require('dotenv').config();
 
 // models call 
-const User = require('../models/rideruser');
+const Rider = require('../models/rideruser');
 const DeliveryArea = require('../models/deliveryArea');
 
 const { sendOTP } = require('../utils/nodemailer');
@@ -18,8 +18,9 @@ const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const phoneNumberRegex = /^(\+?\d{1,3})?[-.\s]?(\(?\d{3}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}$/;
 
-// Port Harcourt coordinates and distance check
-const portHarcourtCenter = { lat: 4.8156, lon: 7.0498 };
+
+// Ibadan coordinates and distance check
+const ibadanCenter = { lat: 7.3775, lon: 3.9470 };
 const maxDistanceInKm = 20;
 
 const calculateDistance = (lat1, lon1, lat2, lon2) => {
@@ -34,6 +35,7 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c; // Distance in kilometers
 };
+
 
 router.post('/signup', async (req, res) => {
   const { firstName, lastName, email, password, phoneNumber, deliveryArea, vehicle } = req.body;
@@ -60,7 +62,7 @@ router.post('/signup', async (req, res) => {
 
   try {
     // Check if user already exists
-    const existingUser = await User.findOne({ email });
+    const existingUser = await Rider.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'User with this email already exists' });
     }
@@ -72,22 +74,24 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ message: 'Delivery area not found' });
     }
 
-    // Check if user's location is within 20 km of Port Harcourt
-    const userLocation = deliveryAreaData.coordinates;
-    const distanceFromPortHarcourt = calculateDistance(
-      portHarcourtCenter.lat, portHarcourtCenter.lon,
-      userLocation[1], userLocation[0]
-    );
 
-    if (distanceFromPortHarcourt > maxDistanceInKm) {
-      return res.status(400).json({ message: `You must be located within ${maxDistanceInKm} km of Port Harcourt, Nigeria.` });
-    }
+// Check if user's location is within 20 km of Ibadan
+const userLocation = deliveryAreaData.coordinates; // [longitude, latitude]
+const distanceFromIbadan = calculateDistance(
+  ibadanCenter.lat, ibadanCenter.lon,
+  userLocation[1], userLocation[0] // Extract latitude and longitude from user's location
+);
 
+if (distanceFromIbadan > maxDistanceInKm) {
+  return res.status(400).json({
+    message: `You must be located within ${maxDistanceInKm} km of Ibadan, Nigeria.`,
+  });
+}
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create a new user
-    const user = new User({
+    const user = new Rider({
       firstName,
       lastName,
       email,
@@ -136,7 +140,7 @@ router.post('/login', async (req, res) => {
 
     try {
         // Check if user with that email exists in the database
-        const user = await User.findOne({ email });
+        const user = await Rider.findOne({ email });
         if (!user) {
             return res.status(400).json({ status: 'error', msg: 'Incorrect email or password' });
         }
@@ -193,7 +197,7 @@ router.post('/forgot-password', async (req, res) => {
 
     try {
         // Check if the user exists
-        const user = await User.findOne({ email });
+        const user = await Rider.findOne({ email });
         if (!user) {
             return res.status(404).json({ status: "error", msg: "User not found" });
         }
@@ -222,7 +226,7 @@ router.post('/verify-otp', async (req, res) => {
   const { otp } = req.body;
 
   try {
-    const user = await User.findOne({ otp });
+    const user = await Rider.findOne({ otp });
 
     if (!user) {
       return res.status(400).send({ msg: 'Invalid OTP' });
@@ -249,7 +253,7 @@ router.post('/reset-password/:token', async (req, res) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     
-    const user = await User.findOne({
+    const user = await Rider.findOne({
       _id: decoded.userId,
       resetPasswordToken: token,
       resetPasswordExpires: { $gt: Date.now() }
@@ -279,20 +283,19 @@ router.post('/reset-password/:token', async (req, res) => {
 
 // Endpoint to edit user details
 router.put('/edit', authenticateUser, async (req, res) => {
-    const { email, firstName, lastName, phoneNumber } = req.body;
+    const { email, Name, phoneNumber } = req.body;
     const userId = req.userId;
 
     try {
         // Find user by ID
-        const user = await User.findById(userId);
+        const user = await Rider.findById(userId);
         if (!user) {
             return res.status(404).json({ status: 'error', msg: 'User not found' });
         }
 
         // Update user fields
         if (email) user.email = email;
-        if (firstName) user.firstName = firstName;
-        if (lastName) user.lastName = lastName;
+        if (Name) user.Name = Name;
         if (phoneNumber) user.phoneNumber = phoneNumber;
 
         await user.save();
@@ -312,7 +315,7 @@ router.put('/edit', authenticateUser, async (req, res) => {
 router.post('/logout', authenticateUser, async (req, res) => {
     try {
         // Mark the user as logged out in the database
-        await User.findByIdAndUpdate(req.userId, { is_online: false });
+        await Rider.findByIdAndUpdate(req.userId, { is_online: false });
 
         // Response
         res.status(200).json({ status: 'success', msg: 'You have successfully logged out' });

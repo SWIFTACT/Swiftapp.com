@@ -251,7 +251,7 @@ router.post('/reset-password/:token', async (req, res) => {
 
 // Endpoint to edit user details
 router.put('/edit', authenticateUser, async (req, res) => {
-    const { email, firstName, lastName, phoneNumber } = req.body;
+    const { email, Name, phoneNumber } = req.body;
     const userId = req.userId;
 
     try {
@@ -263,8 +263,7 @@ router.put('/edit', authenticateUser, async (req, res) => {
 
         // Update user fields
         if (email) user.email = email;
-        if (firstName) user.firstName = firstName;
-        if (lastName) user.lastName = lastName;
+        if (Name) user.Name =Name;
         if (phoneNumber) user.phoneNumber = phoneNumber;
 
         await user.save();
